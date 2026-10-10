@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-river-emerald: #163d32;
+    --color-river-emerald-dark: #0d2820;
+    --color-river-emerald-light: #235445;
+    --color-warm-ivory: #f7f3ea;
+    --color-warm-cream: #faf7f0;
+    --color-warm-surface: #f1ede3;
+    --color-espresso: #251913;
+    --color-espresso-deep: #160e0a;
+    --color-river-sage: #98a994;
+    --color-champagne-gold: #c3a165;
+    --color-champagne-gold-light: #dec089;
+    --color-godavari-dusk: #0f1c2c;
+    --color-godavari-deep: #08101a;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-warm-cream);
+    color: var(--color-espresso);
+    font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1ede3;
+}
+::-webkit-scrollbar-thumb {
+  background: #c3a165;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #163d32;
+}
+
+/* Font Classes */
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.font-body {
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+}
+
+/* Glassmorphism & Micro-effects */
+.glass-panel-dark {
+  background: rgba(13, 40, 32, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(195, 161, 101, 0.2);
+}
+
+.glass-panel-light {
+  background: rgba(247, 243, 234, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(22, 61, 50, 0.1);
+}
+
+.glass-panel-twilight {
+  background: rgba(15, 28, 44, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(195, 161, 101, 0.25);
+}
+
+/* Water Ripple Animations */
+@keyframes rippleFlow {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+}
+
+.animate-ripple {
+  animation: rippleFlow 7s ease-in-out infinite;
+}
+
+@keyframes steamRise {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  70% {
+    transform: translateY(-20px) scaleX(1.3);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-40px) scaleX(1.6);
+    opacity: 0;
+  }
+}
+
+.animate-steam {
+  animation: steamRise 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Subtle Shimmer for Badges */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.badge-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(195, 161, 101, 0.1) 0%,
+    rgba(195, 161, 101, 0.35) 50%,
+    rgba(195, 161, 101, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear;
+}
+
+/* Safe Area insets for modern mobile devices */
+.safe-bottom-padding {
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
